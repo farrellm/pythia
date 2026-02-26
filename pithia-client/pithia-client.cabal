@@ -1,0 +1,68 @@
+cabal-version: 2.2
+
+-- This file has been generated from package.yaml by hpack version 0.39.1.
+--
+-- see: https://github.com/sol/hpack
+
+name:           pithia-client
+version:        0.1.0.0
+description:    Please see the README on GitHub at <https://github.com/farrellm/pithia-client#readme>
+homepage:       https://github.com/farrellm/pithia#readme
+bug-reports:    https://github.com/farrellm/pithia/issues
+author:         Matthew Farrell
+maintainer:     farrellm@alum.mit.edu
+copyright:      2026 Matthew Farrell
+license:        BSD-3-Clause
+license-file:   LICENSE
+build-type:     Simple
+extra-source-files:
+    README.md
+    CHANGELOG.md
+
+source-repository head
+  type: git
+  location: https://github.com/farrellm/pithia
+
+library
+  exposed-modules:
+      Lib
+  other-modules:
+      Paths_pithia_client
+  autogen-modules:
+      Paths_pithia_client
+  hs-source-dirs:
+      src
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints
+  build-depends:
+      base >=4.7 && <5
+    , pithia-core
+  default-language: Haskell2010
+
+executable pithia-client-exe
+  main-is: Main.hs
+  other-modules:
+      Paths_pithia_client
+  autogen-modules:
+      Paths_pithia_client
+  hs-source-dirs:
+      app
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      base >=4.7 && <5
+    , pithia-client
+  default-language: Haskell2010
+
+test-suite pithia-client-test
+  type: exitcode-stdio-1.0
+  main-is: Spec.hs
+  other-modules:
+      Paths_pithia_client
+  autogen-modules:
+      Paths_pithia_client
+  hs-source-dirs:
+      test
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      base >=4.7 && <5
+    , pithia-client
+  default-language: Haskell2010
