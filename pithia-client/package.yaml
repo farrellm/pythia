@@ -36,7 +36,16 @@ ghc-options:
 library:
   source-dirs: src
   dependencies:
-    - pithia-core
+  - pithia-core
+  - aeson
+  - cases
+  - conduit
+  - http-conduit
+  - servant
+  - servant-client
+  - text
+  - transformers
+  - vector
 
 executables:
   pithia-client-exe:
@@ -47,7 +56,10 @@ executables:
     - -rtsopts
     - -with-rtsopts=-N
     dependencies:
+    - pithia-core
     - pithia-client
+    - text
+    - transformers
 
 tests:
   pithia-client-test:

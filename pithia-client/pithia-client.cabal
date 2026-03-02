@@ -26,6 +26,8 @@ source-repository head
 library
   exposed-modules:
       Lib
+      Pithia.Client.OpenAI
+      Pithia.Client.OpenAI.API
   other-modules:
       Paths_pithia_client
   autogen-modules:
@@ -34,8 +36,17 @@ library
       src
   ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints
   build-depends:
-      base >=4.7 && <5
+      aeson
+    , base >=4.7 && <5
+    , cases
+    , conduit
+    , http-conduit
     , pithia-core
+    , servant
+    , servant-client
+    , text
+    , transformers
+    , vector
   default-language: Haskell2010
 
 executable pithia-client-exe
@@ -50,6 +61,9 @@ executable pithia-client-exe
   build-depends:
       base >=4.7 && <5
     , pithia-client
+    , pithia-core
+    , text
+    , transformers
   default-language: Haskell2010
 
 test-suite pithia-client-test
