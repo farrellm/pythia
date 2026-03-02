@@ -26,6 +26,7 @@ source-repository head
 library
   exposed-modules:
       Lib
+      Pithia.Client.Common
       Pithia.Client.OpenAI
       Pithia.Client.OpenAI.API
   other-modules:

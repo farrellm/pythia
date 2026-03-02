@@ -1,13 +1,17 @@
 {-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE ImportQualifiedPost #-}
 
 module Pithia.Client.OpenAI.API where
 
-import Cases (snakify)
 import Data.Aeson
+  ( FromJSON (parseJSON),
+    ToJSON (toEncoding),
+    defaultOptions,
+    genericParseJSON,
+    genericToEncoding,
+  )
 import Data.Text (Text)
-import Data.Text qualified as T
-import GHC.Generics
+import GHC.Generics (Generic)
+import Pithia.Client.Common (jsonOptions)
 
 data ChatRequest = ChatRequest
   { model :: Text,
@@ -41,23 +45,12 @@ instance ToJSON Message where
   toEncoding = genericToEncoding defaultOptions
 
 instance ToJSON Role where
-  toEncoding =
-    genericToEncoding
-      defaultOptions
-        { constructorTagModifier = viaText snakify
-        }
-
-viaText :: (Text -> Text) -> String -> String
-viaText f = T.unpack . f . T.pack
+  toEncoding = genericToEncoding jsonOptions
 
 instance FromJSON Message
 
 instance FromJSON Role where
-  parseJSON =
-    genericParseJSON
-      defaultOptions
-        { constructorTagModifier = viaText snakify
-        }
+  parseJSON = genericParseJSON jsonOptions
 
 instance FromJSON ChatResponse
 
