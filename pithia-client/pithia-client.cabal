@@ -26,9 +26,12 @@ source-repository head
 library
   exposed-modules:
       Lib
+      Pithia.Client.Anthropic
+      Pithia.Client.Anthropic.API
       Pithia.Client.Common
       Pithia.Client.OpenAI
       Pithia.Client.OpenAI.API
+      Pithia.Client.Orphan
   other-modules:
       Paths_pithia_client
   autogen-modules:
@@ -37,10 +40,14 @@ library
       src
   ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints
   build-depends:
-      aeson
+      GenericPretty
+    , aeson
+    , aeson-pretty
     , base >=4.7 && <5
+    , bytestring
     , cases
     , conduit
+    , data-default
     , http-conduit
     , pithia-core
     , servant
@@ -60,7 +67,9 @@ executable pithia-client-exe
       app
   ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -threaded -rtsopts -with-rtsopts=-N
   build-depends:
-      base >=4.7 && <5
+      GenericPretty
+    , base >=4.7 && <5
+    , data-default
     , pithia-client
     , pithia-core
     , text

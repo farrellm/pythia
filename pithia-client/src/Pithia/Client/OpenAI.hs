@@ -12,8 +12,8 @@ module Pithia.Client.OpenAI
 where
 
 import Control.Monad.IO.Class (liftIO)
-import Control.Monad.Trans.Except
-import Data.Proxy
+import Control.Monad.Trans.Except (throwE)
+import Data.Proxy (Proxy (Proxy))
 import Data.Text (Text)
 import Network.HTTP.Conduit hiding (Proxy)
 import Pithia.Client.OpenAI.API
@@ -43,7 +43,7 @@ openAI :: Proxy OpenAI
 openAI = Proxy
 
 data OpenAIRequest = OpenAIRequest
-  { token :: Text,
+  { apiKey :: Text,
     chatRequest :: ChatRequest
   }
 
@@ -52,7 +52,7 @@ instance LLM OpenAI where
   type Response OpenAI = ChatResponse
   type Error OpenAI = ClientError
 
-  query _ OpenAIRequest {token, chatRequest} = do
+  query _ OpenAIRequest {apiKey, chatRequest} = do
     manager <- liftIO $ newManager tlsManagerSettings
     let url =
           BaseUrl
@@ -62,7 +62,7 @@ instance LLM OpenAI where
               baseUrlPath = ""
             }
         env = mkClientEnv manager url
-        authHeader = "Bearer " <> token
+        authHeader = "Bearer " <> apiKey
     res <- liftIO $ runClientM (queryGPT (Just authHeader) chatRequest) env
     case res of
       Left err -> throwE err

@@ -38,8 +38,12 @@ library:
   dependencies:
   - pithia-core
   - aeson
+  - aeson-pretty
+  - bytestring
   - cases
   - conduit
+  - data-default
+  - GenericPretty
   - http-conduit
   - servant
   - servant-client
@@ -58,6 +62,8 @@ executables:
     dependencies:
     - pithia-core
     - pithia-client
+    - data-default
+    - GenericPretty
     - text
     - transformers
 
