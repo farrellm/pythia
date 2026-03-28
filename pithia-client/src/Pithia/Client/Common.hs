@@ -2,6 +2,7 @@
 
 module Pithia.Client.Common
   ( viaText,
+    onJust,
     jsonOptions,
     pshow,
     pprint,
@@ -24,6 +25,10 @@ import Data.Text.IO qualified as TIO
 
 viaText :: (Text -> Text) -> String -> String
 viaText f = T.unpack . f . T.pack
+
+onJust :: (Applicative m) => (a -> m ()) -> Maybe a -> m ()
+onJust _ Nothing = pure ()
+onJust f (Just x) = f x
 
 jsonOptions :: Options
 jsonOptions =

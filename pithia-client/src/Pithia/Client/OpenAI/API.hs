@@ -1,11 +1,12 @@
 {-# LANGUAGE DeriveGeneric #-}
+{-# LANGUAGE DuplicateRecordFields #-}
+{-# LANGUAGE OverloadedStrings #-}
 
 module Pithia.Client.OpenAI.API where
 
 import Data.Aeson
   ( FromJSON (parseJSON),
     ToJSON (toEncoding),
-    defaultOptions,
     genericParseJSON,
     genericToEncoding,
   )
@@ -15,7 +16,8 @@ import Pithia.Client.Common (jsonOptions)
 
 data ChatRequest = ChatRequest
   { model :: Text,
-    messages :: [Message]
+    messages :: [Message],
+    stream :: Maybe Bool
   }
   deriving (Generic, Show)
 
@@ -38,11 +40,37 @@ data Choice = Choice
   }
   deriving (Generic, Show)
 
+data ChatChunk = ChatChunk
+  { id :: Text,
+    created :: Int,
+    model :: Text,
+    serviceTier :: Text,
+    systemFingerprint :: Maybe Text,
+    choices :: [ChunkChoice],
+    obfuscation :: Maybe Text
+  }
+  deriving (Generic, Show)
+
+data FinishReason = Stop | Length
+  deriving (Generic, Show)
+
+data ChunkChoice = ChunkChoice
+  { index :: Int,
+    delta :: MessageDelta,
+    finishReason :: Maybe FinishReason
+  }
+  deriving (Generic, Show)
+
+data MessageDelta = MessageDelta
+  { content :: Maybe Text
+  }
+  deriving (Generic, Show)
+
 instance ToJSON ChatRequest where
-  toEncoding = genericToEncoding defaultOptions
+  toEncoding = genericToEncoding jsonOptions
 
 instance ToJSON Message where
-  toEncoding = genericToEncoding defaultOptions
+  toEncoding = genericToEncoding jsonOptions
 
 instance ToJSON Role where
   toEncoding = genericToEncoding jsonOptions
@@ -54,4 +82,23 @@ instance FromJSON Role where
 
 instance FromJSON ChatResponse
 
-instance FromJSON Choice
+instance ToJSON ChatResponse where
+  toEncoding = genericToEncoding jsonOptions
+
+instance ToJSON Choice where
+  toEncoding = genericToEncoding jsonOptions
+
+instance FromJSON Choice where
+  parseJSON = genericParseJSON jsonOptions
+
+instance FromJSON ChatChunk where
+  parseJSON = genericParseJSON jsonOptions
+
+instance FromJSON FinishReason where
+  parseJSON = genericParseJSON jsonOptions
+
+instance FromJSON ChunkChoice where
+  parseJSON = genericParseJSON jsonOptions
+
+instance FromJSON MessageDelta where
+  parseJSON = genericParseJSON jsonOptions

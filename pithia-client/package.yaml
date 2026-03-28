@@ -41,12 +41,13 @@ library:
   - aeson-pretty
   - bytestring
   - cases
-  - conduit
   - data-default
   - GenericPretty
-  - http-conduit
+  - http-client
+  - http-client-tls
   - servant
   - servant-client
+  - servant-client-core
   - text
   - transformers
   - vector
@@ -60,12 +61,7 @@ executables:
     - -rtsopts
     - -with-rtsopts=-N
     dependencies:
-    - pithia-core
     - pithia-client
-    - data-default
-    - GenericPretty
-    - text
-    - transformers
 
 tests:
   pithia-client-test:

@@ -46,12 +46,13 @@ library
     , base >=4.7 && <5
     , bytestring
     , cases
-    , conduit
     , data-default
-    , http-conduit
+    , http-client
+    , http-client-tls
     , pithia-core
     , servant
     , servant-client
+    , servant-client-core
     , text
     , transformers
     , vector
@@ -67,13 +68,8 @@ executable pithia-client-exe
       app
   ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -threaded -rtsopts -with-rtsopts=-N
   build-depends:
-      GenericPretty
-    , base >=4.7 && <5
-    , data-default
+      base >=4.7 && <5
     , pithia-client
-    , pithia-core
-    , text
-    , transformers
   default-language: Haskell2010
 
 test-suite pithia-client-test

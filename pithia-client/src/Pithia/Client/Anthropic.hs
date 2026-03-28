@@ -12,11 +12,12 @@ module Pithia.Client.Anthropic
 where
 
 import Control.Monad.IO.Class (liftIO)
-import Control.Monad.Trans.Except
+import Control.Monad.Trans.Except (throwE)
 import Data.Default (Default (def))
-import Data.Proxy
+import Data.Proxy (Proxy (Proxy))
 import Data.Text (Text)
-import Network.HTTP.Conduit hiding (Proxy)
+import Network.HTTP.Client (newManager)
+import Network.HTTP.Client.TLS (tlsManagerSettings)
 import Pithia.Client.Anthropic.API
 import Pithia.Core.Class
 import Servant.API
