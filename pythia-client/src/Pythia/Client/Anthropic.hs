@@ -6,7 +6,7 @@
 {-# LANGUAGE TypeFamilies #-}
 {-# LANGUAGE TypeOperators #-}
 
-module Pithia.Client.Anthropic
+module Pythia.Client.Anthropic
   ( AnthropicRequest (..),
     ClientError,
     anthropic,
@@ -23,9 +23,9 @@ import Data.Proxy (Proxy (Proxy))
 import Data.Text (Text)
 import Network.HTTP.Client (newManager)
 import Network.HTTP.Client.TLS (tlsManagerSettings)
-import Pithia.Client.Anthropic.API
-import Pithia.Client.Common (onJust)
-import Pithia.Core.Class
+import Pythia.Client.Anthropic.API
+import Pythia.Client.Common (onJust)
+import Pythia.Core.Class
 import Servant.API
 import Servant.Client
 import Servant.Client.Core.ServerSentEvents (EventMessage (..), EventMessageStreamT (unEventMessageStreamT))

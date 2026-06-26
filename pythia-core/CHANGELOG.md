@@ -1,4 +1,4 @@
-# Changelog for `pithia-core`
+# Changelog for `pythia-core`
 
 All notable changes to this project will be documented in this file.
 

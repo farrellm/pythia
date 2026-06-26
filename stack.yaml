@@ -2,9 +2,9 @@ snapshot:
   url: https://raw.githubusercontent.com/commercialhaskell/stackage-snapshots/master/lts/24/32.yaml
 
 packages:
-- pithia-client
-- pithia-core
-- pithia-effectful
+- pythia-client
+- pythia-core
+- pythia-effectful
 
 # extra-deps: []
 

@@ -6,7 +6,7 @@
 {-# LANGUAGE TypeFamilies #-}
 {-# LANGUAGE TypeOperators #-}
 
-module Pithia.Client.OpenAI
+module Pythia.Client.OpenAI
   ( OpenAIRequest (..),
     ClientError,
     openAI,
@@ -22,9 +22,9 @@ import Data.Proxy (Proxy (Proxy))
 import Data.Text (Text)
 import Network.HTTP.Client (newManager)
 import Network.HTTP.Client.TLS (tlsManagerSettings)
-import Pithia.Client.Common (onJust)
-import Pithia.Client.OpenAI.API
-import Pithia.Core.Class
+import Pythia.Client.Common (onJust)
+import Pythia.Client.OpenAI.API
+import Pythia.Core.Class
 import Servant.API
 import Servant.Client
 import Servant.Client.Core.ServerSentEvents (EventMessage (..), EventMessageStreamT (unEventMessageStreamT))

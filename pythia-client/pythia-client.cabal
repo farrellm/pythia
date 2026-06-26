@@ -4,11 +4,11 @@ cabal-version: 2.2
 --
 -- see: https://github.com/sol/hpack
 
-name:           pithia-core
+name:           pythia-client
 version:        0.1.0.0
-description:    Please see the README on GitHub at <https://github.com/farrellm/pithia-core#readme>
-homepage:       https://github.com/farrellm/pithia#readme
-bug-reports:    https://github.com/farrellm/pithia/issues
+description:    Please see the README on GitHub at <https://github.com/farrellm/pythia-client#readme>
+homepage:       https://github.com/farrellm/pythia#readme
+bug-reports:    https://github.com/farrellm/pythia/issues
 author:         Matthew Farrell
 maintainer:     farrellm@alum.mit.edu
 copyright:      2026 Matthew Farrell
@@ -21,49 +21,68 @@ extra-source-files:
 
 source-repository head
   type: git
-  location: https://github.com/farrellm/pithia
+  location: https://github.com/farrellm/pythia
 
 library
   exposed-modules:
       Lib
-      Pithia.Core.Class
+      Pythia.Client.Anthropic
+      Pythia.Client.Anthropic.API
+      Pythia.Client.Common
+      Pythia.Client.OpenAI
+      Pythia.Client.OpenAI.API
+      Pythia.Client.Orphan
   other-modules:
-      Paths_pithia_core
+      Paths_pythia_client
   autogen-modules:
-      Paths_pithia_core
+      Paths_pythia_client
   hs-source-dirs:
       src
   ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints
   build-depends:
-      base >=4.7 && <5
+      GenericPretty
+    , aeson
+    , aeson-pretty
+    , base >=4.7 && <5
+    , bytestring
+    , cases
+    , data-default
+    , http-client
+    , http-client-tls
+    , pythia-core
+    , servant
+    , servant-client
+    , servant-client-core
+    , text
     , transformers
+    , vector
   default-language: Haskell2010
 
-executable pithia-core-exe
+executable pythia-client-exe
   main-is: Main.hs
   other-modules:
-      Paths_pithia_core
+      Paths_pythia_client
   autogen-modules:
-      Paths_pithia_core
+      Paths_pythia_client
   hs-source-dirs:
       app
   ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -threaded -rtsopts -with-rtsopts=-N
   build-depends:
       base >=4.7 && <5
-    , pithia-core
+    , pythia-client
   default-language: Haskell2010
 
-test-suite pithia-core-test
+test-suite pythia-client-test
   type: exitcode-stdio-1.0
   main-is: Spec.hs
   other-modules:
-      Paths_pithia_core
+      Paths_pythia_client
   autogen-modules:
-      Paths_pithia_core
+      Paths_pythia_client
   hs-source-dirs:
       test
   ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -threaded -rtsopts -with-rtsopts=-N
   build-depends:
       base >=4.7 && <5
-    , pithia-core
+    , pythia-client
   default-language: Haskell2010

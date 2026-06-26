@@ -1,4 +1,4 @@
-# Changelog for `pithia-client`
+# Changelog for `pythia-client`
 
 All notable changes to this project will be documented in this file.
 

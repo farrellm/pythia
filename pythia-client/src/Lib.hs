@@ -16,12 +16,12 @@ where
 import Control.Monad.Trans.Except (runExceptT)
 import Data.Default (def)
 import Data.Text qualified as T
-import Pithia.Client.Anthropic as Anthropic
-import Pithia.Client.Anthropic.API qualified as Anthropic
-import Pithia.Client.Common (pprint)
-import Pithia.Client.OpenAI
-import Pithia.Client.OpenAI.API qualified as OpenAI
-import Pithia.Core.Class
+import Pythia.Client.Anthropic as Anthropic
+import Pythia.Client.Anthropic.API qualified as Anthropic
+import Pythia.Client.Common (pprint)
+import Pythia.Client.OpenAI
+import Pythia.Client.OpenAI.API qualified as OpenAI
+import Pythia.Core.Class
 import System.Environment (getEnv)
 
 testOpenAI :: IO ()

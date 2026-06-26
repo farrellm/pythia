@@ -1,1 +1,0 @@
-# pithia-client

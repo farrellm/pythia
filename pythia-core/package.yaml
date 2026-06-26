@@ -1,6 +1,6 @@
-name:                pithia-effectful
+name:                pythia-core
 version:             0.1.0.0
-github:              "farrellm/pithia"
+github:              "farrellm/pythia"
 license:             BSD-3-Clause
 author:              "Matthew Farrell"
 maintainer:          "farrellm@alum.mit.edu"
@@ -17,7 +17,7 @@ extra-source-files:
 # To avoid duplicated efforts in documentation and dealing with the
 # complications of embedding Haddock markup inside cabal files, it is
 # common to point users to the README.md file.
-description:         Please see the README on GitHub at <https://github.com/farrellm/pithia-effectful#readme>
+description:         Please see the README on GitHub at <https://github.com/farrellm/pythia-core#readme>
 
 dependencies:
 - base >= 4.7 && < 5
@@ -36,10 +36,10 @@ ghc-options:
 library:
   source-dirs: src
   dependencies:
-    - pithia-core
+  - transformers
 
 executables:
-  pithia-effectful-exe:
+  pythia-core-exe:
     main:                Main.hs
     source-dirs:         app
     ghc-options:
@@ -47,10 +47,10 @@ executables:
     - -rtsopts
     - -with-rtsopts=-N
     dependencies:
-    - pithia-effectful
+    - pythia-core
 
 tests:
-  pithia-effectful-test:
+  pythia-core-test:
     main:                Spec.hs
     source-dirs:         test
     ghc-options:
@@ -58,4 +58,4 @@ tests:
     - -rtsopts
     - -with-rtsopts=-N
     dependencies:
-    - pithia-effectful
+    - pythia-core

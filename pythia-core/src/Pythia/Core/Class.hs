@@ -1,7 +1,7 @@
 {-# LANGUAGE DeriveGeneric #-}
 {-# LANGUAGE TypeFamilies #-}
 
-module Pithia.Core.Class
+module Pythia.Core.Class
   ( LLM (..),
     LLMStreaming (..),
     ChatEvent (..),

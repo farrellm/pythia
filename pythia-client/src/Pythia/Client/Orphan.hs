@@ -1,6 +1,6 @@
 {-# OPTIONS_GHC -Wno-orphans #-}
 
-module Pithia.Client.Orphan () where
+module Pythia.Client.Orphan () where
 
 import Data.Text (Text)
 import qualified Data.Text as T

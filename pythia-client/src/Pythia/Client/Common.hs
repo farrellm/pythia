@@ -1,6 +1,6 @@
 {-# LANGUAGE ImportQualifiedPost #-}
 
-module Pithia.Client.Common
+module Pythia.Client.Common
   ( viaText,
     onJust,
     jsonOptions,

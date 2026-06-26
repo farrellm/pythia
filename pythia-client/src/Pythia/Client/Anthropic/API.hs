@@ -3,7 +3,7 @@
 {-# LANGUAGE MultiWayIf #-}
 {-# LANGUAGE OverloadedStrings #-}
 
-module Pithia.Client.Anthropic.API where
+module Pythia.Client.Anthropic.API where
 
 import Cases (snakify)
 import Data.Aeson
@@ -17,8 +17,8 @@ import Data.Aeson
 import Data.Default (Default (def))
 import Data.Text (Text)
 import GHC.Generics (Generic)
-import Pithia.Client.Common (jsonOptions, viaText)
-import Pithia.Client.Orphan ()
+import Pythia.Client.Common (jsonOptions, viaText)
+import Pythia.Client.Orphan ()
 import Text.PrettyPrint.GenericPretty (Out)
 
 data ChatRequest = ChatRequest

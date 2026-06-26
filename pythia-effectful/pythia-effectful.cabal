@@ -4,11 +4,11 @@ cabal-version: 2.2
 --
 -- see: https://github.com/sol/hpack
 
-name:           pithia-client
+name:           pythia-effectful
 version:        0.1.0.0
-description:    Please see the README on GitHub at <https://github.com/farrellm/pithia-client#readme>
-homepage:       https://github.com/farrellm/pithia#readme
-bug-reports:    https://github.com/farrellm/pithia/issues
+description:    Please see the README on GitHub at <https://github.com/farrellm/pythia-effectful#readme>
+homepage:       https://github.com/farrellm/pythia#readme
+bug-reports:    https://github.com/farrellm/pythia/issues
 author:         Matthew Farrell
 maintainer:     farrellm@alum.mit.edu
 copyright:      2026 Matthew Farrell
@@ -21,68 +21,48 @@ extra-source-files:
 
 source-repository head
   type: git
-  location: https://github.com/farrellm/pithia
+  location: https://github.com/farrellm/pythia
 
 library
   exposed-modules:
       Lib
-      Pithia.Client.Anthropic
-      Pithia.Client.Anthropic.API
-      Pithia.Client.Common
-      Pithia.Client.OpenAI
-      Pithia.Client.OpenAI.API
-      Pithia.Client.Orphan
   other-modules:
-      Paths_pithia_client
+      Paths_pythia_effectful
   autogen-modules:
-      Paths_pithia_client
+      Paths_pythia_effectful
   hs-source-dirs:
       src
   ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints
   build-depends:
-      GenericPretty
-    , aeson
-    , aeson-pretty
-    , base >=4.7 && <5
-    , bytestring
-    , cases
-    , data-default
-    , http-client
-    , http-client-tls
-    , pithia-core
-    , servant
-    , servant-client
-    , servant-client-core
-    , text
-    , transformers
-    , vector
+      base >=4.7 && <5
+    , pythia-core
   default-language: Haskell2010
 
-executable pithia-client-exe
+executable pythia-effectful-exe
   main-is: Main.hs
   other-modules:
-      Paths_pithia_client
+      Paths_pythia_effectful
   autogen-modules:
-      Paths_pithia_client
+      Paths_pythia_effectful
   hs-source-dirs:
       app
   ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -threaded -rtsopts -with-rtsopts=-N
   build-depends:
       base >=4.7 && <5
-    , pithia-client
+    , pythia-effectful
   default-language: Haskell2010
 
-test-suite pithia-client-test
+test-suite pythia-effectful-test
   type: exitcode-stdio-1.0
   main-is: Spec.hs
   other-modules:
-      Paths_pithia_client
+      Paths_pythia_effectful
   autogen-modules:
-      Paths_pithia_client
+      Paths_pythia_effectful
   hs-source-dirs:
       test
   ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -threaded -rtsopts -with-rtsopts=-N
   build-depends:
       base >=4.7 && <5
-    , pithia-client
+    , pythia-effectful
   default-language: Haskell2010

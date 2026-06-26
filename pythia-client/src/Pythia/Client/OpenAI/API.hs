@@ -2,7 +2,7 @@
 {-# LANGUAGE DuplicateRecordFields #-}
 {-# LANGUAGE OverloadedStrings #-}
 
-module Pithia.Client.OpenAI.API where
+module Pythia.Client.OpenAI.API where
 
 import Data.Aeson
   ( FromJSON (parseJSON),
@@ -12,7 +12,7 @@ import Data.Aeson
   )
 import Data.Text (Text)
 import GHC.Generics (Generic)
-import Pithia.Client.Common (jsonOptions)
+import Pythia.Client.Common (jsonOptions)
 
 data ChatRequest = ChatRequest
   { model :: Text,
