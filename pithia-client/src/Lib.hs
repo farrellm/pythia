@@ -1,12 +1,14 @@
 {-# LANGUAGE DuplicateRecordFields #-}
 {-# LANGUAGE ImportQualifiedPost #-}
 {-# LANGUAGE LambdaCase #-}
+{-# LANGUAGE OverloadedRecordDot #-}
 {-# LANGUAGE OverloadedStrings #-}
 
 module Lib
   ( testOpenAI,
     testStreamOpenAI,
     testAnthropic,
+    testAnthropicStream,
     runTest,
   )
 where
@@ -82,9 +84,32 @@ testAnthropic = do
                     ]
                 }
           }
+  pprint reqAnt.chatRequest
   runExceptT (query anthropic reqAnt) >>= \case
     Right res -> pprint res
     Left err -> putStrLn $ "Error: " ++ show err
 
+testAnthropicStream :: IO ()
+testAnthropicStream = do
+  antApiKey <- getEnv "ANTHROPIC_API_KEY"
+  let reqAnt =
+        (def :: AnthropicRequest)
+          { Anthropic.apiKey = T.pack antApiKey,
+            chatRequest =
+              def
+                { Anthropic.messages =
+                    [ Anthropic.Message
+                        { Anthropic.role = Anthropic.User,
+                          Anthropic.content = "Tell me a joke."
+                        }
+                    ],
+                  Anthropic.stream = Just True
+                }
+          }
+  pprint reqAnt.chatRequest
+  runExceptT (queryStreaming anthropic reqAnt print) >>= \case
+    Right () -> pure ()
+    Left err -> putStrLn $ "Error: " ++ show err
+
 runTest :: IO ()
-runTest = testStreamOpenAI
+runTest = testAnthropicStream

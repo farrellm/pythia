@@ -12,7 +12,11 @@ where
 import Cases (snakify)
 import Control.Monad.IO.Class (MonadIO (liftIO))
 import Data.Aeson
-  ( Options (constructorTagModifier, fieldLabelModifier),
+  ( Options
+      ( constructorTagModifier,
+        fieldLabelModifier,
+        omitNothingFields
+      ),
     defaultOptions,
   )
 import Data.Aeson.Encode.Pretty (encodePretty)
@@ -34,7 +38,8 @@ jsonOptions :: Options
 jsonOptions =
   defaultOptions
     { constructorTagModifier = viaText snakify,
-      fieldLabelModifier = viaText snakify
+      fieldLabelModifier = viaText snakify,
+      omitNothingFields = True
     }
 
 pshow :: (ToJSON a) => a -> Text
